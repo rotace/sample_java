@@ -1,25 +1,13 @@
 package tutorial.swing.todolist;
 
-import java.awt.BorderLayout;
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import tutorial.swing.todolist.ToDoListPane.AddActionHandler;
-import tutorial.swing.todolist.ToDoListPane.ModifyActionHandler;
-import tutorial.swing.todolist.ToDoListPane.RemoveActionHandler;
-import tutorial.swing.todolist.ToDoListPane.RemoveThread;
-import tutorial.swing.todolist.ToDoListPane.ToDoListSelectionHandler;
-
+@SuppressWarnings("FieldCanBeLocal")
 public class ToDoListPane extends JPanel {
 	
 	
@@ -64,9 +52,19 @@ public class ToDoListPane extends JPanel {
 		add(toDoInputField, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.SOUTH);
 	}
-	
-	
-	
+
+	private void setButtonsEnabled(boolean enabled) {
+		addButton.setEnabled(enabled);
+		modifyButton.setEnabled(enabled);
+		removeButton.setEnabled(enabled);
+	}
+
+	private void doLongTask() {
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException ex) {
+		}
+	}
 	
 	public class ToDoListSelectionHandler implements ListSelectionListener {
 
@@ -81,7 +79,6 @@ public class ToDoListPane extends JPanel {
 		}
 
 	}
-
 	
 	public class AddActionHandler implements ActionListener {
 
@@ -124,13 +121,6 @@ public class ToDoListPane extends JPanel {
 
 	}
 	
-	private void setButtonsEnabled(boolean enabled) {
-		addButton.setEnabled(enabled);
-		modifyButton.setEnabled(enabled);
-		removeButton.setEnabled(enabled);
-	}
-	
-	
 	public class RemoveThread extends Thread {
 		int index;
 		RemoveThread(int index) {
@@ -147,15 +137,8 @@ public class ToDoListPane extends JPanel {
 					toDoListModel.remove(index);
 					setButtonsEnabled(true);
 				}
-				
+
 			});
-		}
-	}
-	
-	private void doLongTask() {
-		try {
-			Thread.sleep(10000);
-		} catch ( InterruptedException ex) {
 		}
 	}
 
