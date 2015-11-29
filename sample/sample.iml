@@ -16,5 +16,7 @@
     <orderEntry type="jdk" jdkName="JavaSE-1.8" jdkType="JavaSDK" />
     <orderEntry type="library" name="junit4" level="application" />
     <orderEntry type="library" name="commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="dom4j:dom4j:1.6.1" level="project" />
+    <orderEntry type="library" name="jaxen:jaxen:1.1.6" level="project" />
   </component>
 </module>
