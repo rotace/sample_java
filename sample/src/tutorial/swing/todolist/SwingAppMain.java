@@ -40,7 +40,7 @@ public class SwingAppMain {
 		JFrame mainFrame = new JFrame("Todo List");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container contentPane = mainFrame.getContentPane();
-		// Todo List を作成
+		// To do List を作成
 		JComponent newContentPane = new ToDoListPane();
 		contentPane.add(newContentPane, BorderLayout.CENTER);
 		// Windowsサイズを調整
