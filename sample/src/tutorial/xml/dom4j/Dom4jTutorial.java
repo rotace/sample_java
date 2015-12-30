@@ -17,7 +17,7 @@ public class Dom4jTutorial {
 
     public static void main(String[] args) throws IOException, DocumentException {
 
-        String filePath = "out/foo.xml";
+        String filePath = "sample/bin/foo.xml";
         FileWriter out = new FileWriter(filePath);
         Document document1 = createDocument();
         document1.write(out);
