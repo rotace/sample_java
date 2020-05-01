@@ -1,0 +1,16 @@
+// 参考WEB
+// https://qiita.com/vvakame/items/83366fbfa47562fafbf4
+// https://qiita.com/hatimiti/items/a127311d739c9d3e0045
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'Sample'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:4.11" 
+}
