@@ -14,6 +14,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
+ * EchoServer本体
+ * 
+ * JavaFXの実装の参考文献
+ * https://qiita.com/opengl-8080/items/51bef25aa05ecd929a3d
  *
  * @author yasu
  */

@@ -25,6 +25,9 @@ import javafx.scene.control.TextField;
 public class FXMLClientController implements Initializable {
 
     private StateModel model;
+    private TcpMessageClient tcp;
+    private UdpMessageClient udp;
+    
     @FXML
     private ComboBox<ComboFormat> cmbBoxDataA;
     @FXML
@@ -44,8 +47,10 @@ public class FXMLClientController implements Initializable {
         // TODO
     }
 
-    public void setModel(StateModel model) {
+    public void setModel(StateModel model, TcpMessageClient tcp, UdpMessageClient udp) {
         this.model = model;
+        this.tcp = tcp;
+        this.udp = udp;
 
         //---- 接続ボタン ----
         // 接続ボタンをモデルとバインド（ビューとモデルの双方向）
@@ -71,19 +76,22 @@ public class FXMLClientController implements Initializable {
 
     @FXML
     private void MsgSendBtn_OnAction(ActionEvent event) {
-        this.model.dispMessage(this.model.getMessage());
+        this.tcp.SendCommand(this.model.getMessage());
     }
 
     @FXML
     private void ConnectBtn_OnAction(ActionEvent event) {
+        this.tcp.ToggleConnection();
     }
 
     @FXML
     private void TcpSetMsgBtn_OnAction(ActionEvent event) {
+        this.tcp.SendCommand("Set Message: " + this.model.getTcpCmdMsgDataA().getValue() + this.model.getTcpCmdMsgDataB().getValue() );
     }
 
     @FXML
     private void TcpGetMsgBtn_OnAction(ActionEvent event) {
+        this.tcp.SendCommand("Get Message");
     }
 
 }

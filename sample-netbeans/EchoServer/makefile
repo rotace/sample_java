@@ -26,22 +26,20 @@ SRC_CLIENT = $(SRC_PATH)/$(TGT_CLIENT_PATH).java \
 SRC_SERVER = $(SRC_PATH)/$(TGT_SERVER_PATH).java \
              $(SRC_PATH)/$(PKG_SERVER_PATH)/FXMLServerController.java
 
-all:compile
+all:build_server build_client
 
-run_c:compile_c
+client:build_client
 	java -classpath $(CLS_PATH) $(TGT_CLIENT)
 
-run_s:compile_s
+server:build_server
 	java -classpath $(CLS_PATH) $(TGT_SERVER)
 
-compile: compile_s compile_c
-
-compile_c:
+build_client:
 	mkdir -p $(CLS_PATH)
 	javac -sourcepath $(SRC_PATH) $(SRC_CLIENT) -d $(CLS_PATH)
 	rsync -av --include="*/" --include="*.fxml" --exclude="*" $(SRC_PATH)/ $(CLS_PATH)
 
-compile_s:
+build_server:
 	mkdir -p $(CLS_PATH)
 	javac -sourcepath $(SRC_PATH) $(SRC_SERVER) -d $(CLS_PATH)
 	rsync -av --include="*/" --include="*.fxml" --exclude="*" $(SRC_PATH)/ $(CLS_PATH)

@@ -14,7 +14,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * EchoServer用
+ * クライアントアプリ
+ * 
+ * JavaFXの実装の参考文献
+ * 
+ * JavaFX関連（UI,スレッド等）
+ * https://qiita.com/opengl-8080/items/51bef25aa05ecd929a3d
+ * 
+ * Javaの一般的なスレッドについて
+ * https://www.sejuku.net/blog/26331
+ * 
  * @author yasu
  */
 public class EchoClient extends Application {
@@ -30,7 +40,7 @@ public class EchoClient extends Application {
         TcpMessageClient tcpMessageClient = new TcpMessageClient(clientStateModel);
         UdpMessageClient udpMessageClient = new UdpMessageClient(clientStateModel);
         FXMLClientController controller = (FXMLClientController) loader.getController();
-        controller.setModel(clientStateModel);
+        controller.setModel(clientStateModel, tcpMessageClient, udpMessageClient);
 
         Scene scene = new Scene(root);
 
